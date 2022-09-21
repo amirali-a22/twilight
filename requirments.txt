@@ -2,6 +2,6 @@ astral==2.2
 convertdate==2.2.2
 jdatetime==3.6.2
 PyMeeus==0.3.7
+pyTelegramBotAPI==4.7.0
 pytz==2020.1
 requests==2.7.0
-telebot==0.0.3

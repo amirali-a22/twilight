@@ -8,7 +8,9 @@ from astral import LocationInfo
 from astral.sun import sun
 from telebot import types
 
-TOKEN = "1338826635:AAHLSjUwqaT2LMlgqutCASdfrAH1A5EAqZM"
+from bot_data import BOT_TOKEN
+
+TOKEN = BOT_TOKEN
 
 latitude = 35.72
 longitude = 51.40
@@ -16,7 +18,9 @@ longitude = 51.40
 city = LocationInfo("Tehran", "Iran", "Asia/Tehran", latitude, longitude)
 example = LocationInfo("Tehran", "Iran", "Asia/Tehran", 35.72, 51.40)
 
-s = sun(city.observer, date=datetime.date(2020, 9, 16), tzinfo=pytz.timezone(city.timezone))
+tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
+s = sun(city.observer, date=tomorrow, tzinfo=pytz.timezone(city.timezone))
 out_sunrise = s["sunrise"]
 
 ############## Bot Side #####################
@@ -214,8 +218,8 @@ def handle_other(message):
         full_information(message)
     if user_text == 'About Us':
         bot.send_message(chat_id, """This is just for resolve personal need !
-report the bugs and suggestions to @arn_a22
-thanks for using my bot♡.""")
+thanks for using my bot♡,
+creator: Amirali""")
     if user_text == 'Your Own City Data':
         bot.send_message(chat_id, """Send your city information.""")
         bot.send_message(chat_id, """[city] [country] [region/city] [latitude] [longitude]""")
